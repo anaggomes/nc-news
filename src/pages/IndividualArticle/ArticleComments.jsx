@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getArticleComments } from "../../apis/apis";
+import PostComment from "./PostComment";
 
 export default function ArticleComments({
   article_id,
@@ -9,7 +10,9 @@ export default function ArticleComments({
 }) {
   const [articleComments, setArticleComments] = useState([]);
   const [page, setPage] = useState(1);
-
+  const [isAddCommentClicked, setIsAddCommentClicked] = useState(false);
+  const [isCommentSubmitted, setIsCommentSubmitted] = useState(false);
+  const username = "cooljmessy"; //hard coded for now!
   useEffect(() => {
     getArticleComments(article_id, page).then(({ comments }) => {
       const commentsDateFormatted = comments.map((comment) => {
@@ -29,12 +32,31 @@ export default function ArticleComments({
     setPage((currentPage) => currentPage + 1);
   }
 
+  function handleCommentButton() {
+    setIsAddCommentClicked((currentStatus) => !currentStatus);
+  }
+
   if (isCommentsLoading) return <h2 className="page-title">Loading...</h2>;
+
   return (
-    <section>
+    <section id="display-comments">
+      <h3 id="comments-number">{comment_count} Comments:</h3>
+      <button className="add-comment-button" onClick={handleCommentButton}>
+        Add a comment
+      </button>
+
+      {isAddCommentClicked && (
+        <PostComment
+          article_id={article_id}
+          username={username}
+          setIsCommentSubmitted={setIsCommentSubmitted}
+          setArticleComments={setArticleComments}
+          setIsAddCommentClicked={setIsAddCommentClicked}
+        />
+      )}
+      {isCommentSubmitted && <h3>Your comment has been added!</h3>}
       {articleComments.length > 0 ? (
         <>
-          <h3>{comment_count} Comments:</h3>
           <ul>
             {articleComments.map((comment) => {
               return (
@@ -50,7 +72,11 @@ export default function ArticleComments({
               );
             })}
           </ul>
-          <button onClick={handleClick} disabled={page * 10 > comment_count}>
+          <button
+            className="see-more-button"
+            onClick={handleClick}
+            disabled={page * 10 > comment_count}
+          >
             See more
           </button>
         </>
