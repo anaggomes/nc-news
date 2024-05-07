@@ -6,6 +6,11 @@
   width: 100vw;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 #header {
   height: 7vh;
   background-color: grey;
@@ -23,7 +28,7 @@
 }
 
 .page-components {
-  margin: 7vh 0;
+  margin: 7vh auto;
 }
 
 /* ---- article tiles  ---- */
@@ -79,3 +84,44 @@
   font-size: 0.7rem;
 }
 /* ---- end of article tiles  ---- */
+/* ---- Individual article ---- */
+#individual-article {
+  max-width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+/* ---- Display article ---- */
+.display-article {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.display-article-topic {
+  font-size: 1rem;
+  font-weight: 300;
+  width: 100%;
+  margin-bottom: 0;
+  margin-top: 5px;
+}
+.display-article-img {
+  max-width: 100%;
+  height: auto;
+}
+
+.display-article-authorAndDate,
+.display-article-votes {
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 0.8rem;
+  font-weight: 200;
+  width: 50%;
+}
+.display-article-votes {
+  align-self: center;
+  justify-self: center;
+}
+
+/* ---- end of Display article   ---- */
+
+/* ---- end of Individual article   ---- */
