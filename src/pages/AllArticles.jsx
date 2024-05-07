@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { getAllArticles } from "../apis/apis";
 import { ArticleTiles } from "../components/ArticleTile";
 
+import { Link } from "react-router-dom";
+
 export default function AllArticles() {
   const [allArticles, setAllArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -24,7 +26,14 @@ export default function AllArticles() {
         <>
           <h2 className="page-title">All articles</h2>
           {allArticles.map((article) => {
-            return <ArticleTiles key={article.article_id} article={article} />;
+            return (
+              <Link
+                to={`/articles/${article.article_id}`}
+                key={article.article_id}
+              >
+                <ArticleTiles article={article} />
+              </Link>
+            );
           })}
         </>
       )}
