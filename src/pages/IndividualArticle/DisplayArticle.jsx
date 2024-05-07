@@ -26,7 +26,6 @@ export default function DisplayArticle({ article }) {
       </section>
       <span className="display-article-votes">{votes} votes</span>
       <p className="display-article-body">{body}</p>
-      <span className="display-article-comments">{comment_count} comments</span>
     </section>
   );
 }

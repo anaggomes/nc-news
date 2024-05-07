@@ -25,6 +25,7 @@ export default function AllArticles() {
       ) : (
         <>
           <h2 className="page-title">All articles</h2>
+
           {allArticles.map((article) => {
             return (
               <Link
