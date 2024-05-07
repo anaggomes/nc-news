@@ -35,3 +35,15 @@ export function patchArticleVotes(article_id, vote) {
       return data;
     });
 }
+
+export function postArticleComment(body, article_id) {
+  return axios
+    .post(
+      `https://nc-news-dkoj.onrender.com/api/articles/${article_id}/comments`,
+      body
+    )
+    .then(({ data }) => {
+      console.log(data);
+      return data;
+    });
+}
