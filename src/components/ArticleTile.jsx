@@ -12,8 +12,8 @@ export function ArticleTiles({ article }) {
 
   return (
     <section className="article-tiles">
-      <h1 className="article-tiles-topic">{topic}</h1>
-      <h2 className="article-tiles-title">{title}</h2>
+      <h2 className="article-tiles-topic">{topic}</h2>
+      <h3 className="article-tiles-title">{title}</h3>
       <img
         className="article-tiles-image"
         src={article_img_url}

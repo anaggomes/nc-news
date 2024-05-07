@@ -1,10 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");
+
+:root {
+  --orange: #ffa62b;
+  --light-orange: #fbb452ca;
+  --sand: #f9f7f6;
+  --light-blue: #96d1dd83;
+  --medium-blue: #489fb5;
+  --blue: #16697a;
+}
+
 #root {
   max-width: 1280px;
-  /* margin: 0 auto; */
-  /* padding: 2rem; */
   font-size: 16px;
   width: 100vw;
+  background-color: var(--sand);
 }
+
 ul {
   list-style: none;
   margin: 0;
@@ -17,32 +28,55 @@ a {
 .hidden {
   display: none;
 }
+button {
+  background-color: var(--orange);
+  border: none;
+}
+
+button:hover {
+  background-color: var(--sand);
+  color: var(--orange);
+}
+button:active {
+  background-color: var(--light-orange);
+  color: white;
+}
+button:disabled {
+  background-color: var(--light-orange);
+  color: var(sand);
+}
+
+.page-components {
+  margin: 8vh auto;
+}
+/*--- end of general  ---*/
 
 #header {
   height: 7vh;
-  background-color: grey;
+  background-color: var(--blue);
+  color: white;
   position: fixed;
   width: 100%;
   top: 0;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 #app-title {
   width: 50%;
+  font-family: "Monoton", sans-serif;
+  font-size: 2rem;
+  margin: 0;
 }
 
 #footer {
   height: 7vh;
-  background-color: grey;
+  background-color: var(--blue);
+  color: white;
   position: fixed;
   width: 100%;
   bottom: 0;
-}
-
-.page-components {
-  margin: 7vh auto;
 }
 
 /* ---- article tiles  ---- */
@@ -52,9 +86,10 @@ a {
   grid-template-columns: 1fr 1fr 2fr;
   grid-template-rows: repeat(3, 1fr);
   padding-bottom: 12px;
-  padding-top: 12px;
+  padding-top: 15px;
   gap: 5px;
-  box-shadow: 0 1px 2px grey;
+  box-shadow: 0px 1px 5px var(--light-orange);
+  background-color: white;
 }
 
 .article-tiles-image {
@@ -72,6 +107,7 @@ a {
   grid-column: 2;
   grid-row: 1;
   margin: 0;
+  color: var(--blue);
 }
 
 .article-tiles-title {
@@ -100,13 +136,14 @@ a {
 /* ---- end of article tiles  ---- */
 /* ---- Individual article ---- */
 #individual-article {
-  max-width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 /* ---- Display article ---- */
 .display-article {
+  max-width: 90%;
+  margin: 0 auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -117,12 +154,23 @@ a {
   width: 100%;
   margin-bottom: 0;
   margin-top: 5px;
+  color: var(--blue);
+}
+
+.display-article-background {
+  background-color: white;
+  padding: 5px;
+  width: 100vw;
 }
 .display-article-img {
   max-width: 100%;
   height: auto;
 }
-
+.display-article-title {
+  color: var(--blue);
+  background-color: white;
+  width: 100%;
+}
 .display-article-authorAndDate,
 .display-article-votes {
   font-size: 0.9rem;
@@ -143,21 +191,23 @@ a {
   display: flex;
   flex-direction: column;
   align-content: center;
-  background-color: rgba(243, 243, 243, 0.74);
+  background-color: var(--light-blue);
   border-radius: 5px;
-  padding: 5px;
+  padding: 5px 0;
 }
 #comments-number {
   margin: 5px 0 0 5px;
+  color: var(--blue);
 }
 
 .add-comment-button {
   padding: 0.4rem 0;
   margin: 10px auto;
   border-radius: 5px;
-  width: 100%;
-  background-color: white;
+  width: 90%;
+  font-weight: 600;
 }
+
 .new-comment-form {
   display: block;
   margin: 0 auto;
@@ -165,6 +215,7 @@ a {
 .new-comment-form label {
   width: 100%;
   font-weight: 600;
+  font-size: 0.8rem;
 }
 .new-comment-form textarea {
   width: 100%;
@@ -178,14 +229,14 @@ a {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1.3rem auto 1rem;
-  box-shadow: 0 1px 1px grey;
-  margin: 4px;
+  box-shadow: 0 1px 1px var(--light-orange);
+  margin: 4px 0;
   gap: 3px;
-  background-color: white;
+  background-color: var(--sand);
 }
 .article-comments-author {
   margin: 0;
-  font-size: 1rem;
+  font-size: 0.8rem;
   grid-area: 1/1;
 }
 .article-comments-date {
@@ -213,6 +264,16 @@ a {
   margin: 10px;
   background-color: transparent;
   font-size: 0.9rem;
+}
+.see-more-button:hover {
+  color: var(--blue);
+  background-color: transparent;
+}
+.see-more-button:active {
+  background-color: transparent;
+}
+.see-more-button:disabled {
+  background-color: transparent;
 }
 
 /* ---- end of Article Comments---- */
