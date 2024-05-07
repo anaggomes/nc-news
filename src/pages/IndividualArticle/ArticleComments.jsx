@@ -4,6 +4,7 @@ import { getArticleComments } from "../../apis/apis";
 export default function ArticleComments({
   article_id,
   setIsCommentsLoading,
+  isCommentsLoading,
   comment_count,
 }) {
   const [articleComments, setArticleComments] = useState([]);
@@ -22,11 +23,13 @@ export default function ArticleComments({
       });
       setIsCommentsLoading(false);
     });
-  }, [article_id, page, setIsCommentsLoading]);
+  }, [article_id, page]);
 
   function handleClick() {
     setPage((currentPage) => currentPage + 1);
   }
+
+  if (isCommentsLoading) return <h2 className="page-title">Loading...</h2>;
   return (
     <section>
       {articleComments.length > 0 ? (

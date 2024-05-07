@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { getAllArticles } from "../apis/apis";
 import { ArticleTiles } from "../components/ArticleTile";
-
 import { Link } from "react-router-dom";
 
 export default function AllArticles() {
@@ -14,6 +13,7 @@ export default function AllArticles() {
         return { ...article, created_at: article.created_at.split("T")[0] };
       });
       setAllArticles(articlesDateFormatted);
+
       setIsLoading(false);
     });
   }, []);
