@@ -52,7 +52,7 @@ export default function PostComment({
     <>
       <form onSubmit={handleSubmit} className="new-comment-form">
         <label htmlFor="comment-input">{username}</label>
-        <input
+        <textarea
           placeholder="Add a comment..."
           id="comment-input"
           value={commentInput.body}
@@ -64,7 +64,7 @@ export default function PostComment({
         />
         <span className="comment-error">{commentError.msg}</span>
         <button type="submit" disabled={isSubmitClicked}>
-          Comment
+          Send
         </button>
       </form>
     </>

@@ -155,7 +155,7 @@ a {
   padding: 0.4rem 0;
   margin: 10px auto;
   border-radius: 5px;
-  width: 90%;
+  width: 100%;
   background-color: white;
 }
 .new-comment-form {
@@ -166,9 +166,11 @@ a {
   width: 100%;
   font-weight: 600;
 }
-.new-comment-form input {
-  width: 95%;
+.new-comment-form textarea {
+  width: 100%;
+  height: 60px;
   margin: 0 auto;
+  border-radius: 3px;
 }
 
 .article-comment-tile {
