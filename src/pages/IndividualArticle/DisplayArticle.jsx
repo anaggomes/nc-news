@@ -1,3 +1,5 @@
+import HandleArticleVotes from "./HandleArticleVotes";
+
 export default function DisplayArticle({ article }) {
   const {
     article_id,
@@ -24,7 +26,8 @@ export default function DisplayArticle({ article }) {
         <p>author: {author}</p>
         <p>created: {created_at}</p>
       </section>
-      <span className="display-article-votes">{votes} votes</span>
+      {/* <span className="display-article-votes">{votes} votes</span> */}
+      <HandleArticleVotes article_id={article_id} currentVotes={votes} />
       <p className="display-article-body">{body}</p>
     </section>
   );

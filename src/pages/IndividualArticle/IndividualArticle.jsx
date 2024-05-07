@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { getArticleByID } from "../../apis/apis";
 import { useParams } from "react-router-dom";
-import DisplayArticle from "./DisplayArticle";
-import ArticleComments from "./ArticleComments";
+import DisplayArticle from "./DisplayArticle.jsx";
+import ArticleComments from "./ArticleComments.jsx";
 
 export default function IndividualArticle() {
   const [singleArticle, setSingleArticle] = useState({});
@@ -31,6 +31,7 @@ export default function IndividualArticle() {
           <ArticleComments
             article_id={article_id}
             setIsCommentsLoading={setIsCommentsLoading}
+            isCommentsLoading={isCommentsLoading}
             comment_count={singleArticle.comment_count}
           />
         </>
