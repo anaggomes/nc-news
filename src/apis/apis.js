@@ -1,9 +1,9 @@
 import axios from "axios";
 
-export function getAllArticles(topic) {
+export function getAllArticles(topic, sort_by, order_by) {
   return axios
     .get("https://nc-news-dkoj.onrender.com/api/articles", {
-      params: { topic },
+      params: { topic, sort_by, order_by },
     })
     .then(({ data }) => {
       return data;
