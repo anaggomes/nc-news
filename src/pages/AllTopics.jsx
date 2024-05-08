@@ -1,15 +1,27 @@
 import { useEffect, useState } from "react";
 import { getAllTopics } from "../apis/apis";
 import { Link } from "react-router-dom";
+import ErrorPage from "./ErrorPage";
 
 export default function AllTopics() {
   const [allTopics, setAllTopics] = useState([]);
+  const [error, setError] = useState(null);
   useEffect(() => {
-    getAllTopics().then(({ topics }) => {
-      setAllTopics(topics);
-    });
+    getAllTopics()
+      .then(({ topics }) => {
+        setAllTopics(topics);
+      })
+      .catch((err) => {
+        setError({ err });
+      });
   }, []);
-
+  if (error)
+    return (
+      <ErrorPage
+        message={error.err.response.data.message}
+        status={error.err.response.status}
+      />
+    );
   return (
     <section className="page-components" id="topics-page">
       <h2 className="page-title">Find articles about each topic:</h2>
