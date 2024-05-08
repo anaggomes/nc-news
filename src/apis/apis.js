@@ -1,8 +1,10 @@
 import axios from "axios";
 
-export function getAllArticles() {
+export function getAllArticles(topic) {
   return axios
-    .get("https://nc-news-dkoj.onrender.com/api/articles")
+    .get("https://nc-news-dkoj.onrender.com/api/articles", {
+      params: { topic },
+    })
     .then(({ data }) => {
       return data;
     });
@@ -56,6 +58,14 @@ export function deleteComment(comment_id) {
 export function getUserByUsername(username) {
   return axios
     .get(`https://nc-news-dkoj.onrender.com/api/users/${username}/`)
+    .then(({ data }) => {
+      return data;
+    });
+}
+
+export function getAllTopics() {
+  return axios
+    .get(`https://nc-news-dkoj.onrender.com/api/topics`)
     .then(({ data }) => {
       return data;
     });

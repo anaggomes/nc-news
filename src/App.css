@@ -55,6 +55,8 @@ button:disabled {
 
 .page-components {
   margin: 8vh auto;
+  display: flex;
+  flex-direction: column;
 }
 /*--- end of general  ---*/
 
@@ -296,3 +298,22 @@ button:disabled {
 /* ---- end of Article Comments---- */
 
 /* ---- end of Individual article   ---- */
+
+/* ---- All Topics   ---- */
+#topics-component {
+}
+
+.topics-tiles {
+  width: 100vw;
+  padding-bottom: 12px;
+  padding-top: 15px;
+  gap: 5px;
+  box-shadow: 0px 1px 5px var(--light-orange);
+  background-color: white;
+  /* all these could be a separate styling component  and used with articles tiles*/
+  text-align: center;
+}
+.topics-tiles h3 {
+  color: var(--blue);
+}
+/* ---- end of All Topics   ---- */

@@ -2,13 +2,17 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { getAllArticles } from "../apis/apis";
 import { ArticleTiles } from "../components/ArticleTile";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 export default function AllArticles() {
   const [allArticles, setAllArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const topic = searchParams.get("topic");
+
   useEffect(() => {
-    getAllArticles().then(({ articles }) => {
+    getAllArticles(topic).then(({ articles }) => {
       const articlesDateFormatted = articles.map((article) => {
         return { ...article, created_at: article.created_at.split("T")[0] };
       });
