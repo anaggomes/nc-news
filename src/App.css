@@ -58,6 +58,10 @@ button:disabled {
   display: flex;
   flex-direction: column;
 }
+.page-components h2 {
+  color: var(--blue);
+}
+
 /*--- end of general  ---*/
 
 #header {
@@ -89,6 +93,47 @@ button:disabled {
 }
 
 /* ---- article tiles  ---- */
+
+#filter-button {
+  padding: 1rem;
+  background-color: transparent;
+  color: var(--blue);
+  margin: 0 5px 0 auto;
+  justify-items: end;
+}
+#filter-button:active {
+  color: var(--orange);
+}
+#articles-filter {
+  height: 5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background-color: var(--light-blue);
+  border-radius: 5px;
+}
+
+#articles-filter label {
+  color: var(--blue);
+}
+
+#articles-filter select {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 8rem;
+  font-size: 0.9rem;
+  padding: 0.5rem 1em;
+  background-color: #fff;
+  border: 1px solid #caced1;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+#articles-filter select:first-of-type {
+  margin-right: 10px;
+}
+
 .article-tiles {
   width: 100vw;
   display: grid;
@@ -300,8 +345,6 @@ button:disabled {
 /* ---- end of Individual article   ---- */
 
 /* ---- All Topics   ---- */
-#topics-component {
-}
 
 .topics-tiles {
   width: 100vw;

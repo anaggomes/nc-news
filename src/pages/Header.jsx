@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import AllArticles from "./AllArticles";
+import AllArticles from "./AllArticles/AllArticles";
 
 export default function Header() {
   return (

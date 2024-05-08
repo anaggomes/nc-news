@@ -1,5 +1,5 @@
 import "./App.css";
-import AllArticles from "./pages/AllArticles";
+import AllArticles from "./pages/AllArticles/AllArticles.jsx";
 import Footer from "./pages/Footer";
 import Header from "./pages/Header";
 import { Routes, Route } from "react-router-dom";
