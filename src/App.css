@@ -360,3 +360,22 @@ button:disabled {
   color: var(--blue);
 }
 /* ---- end of All Topics   ---- */
+/* ----  Error page   ---- */
+.animation-error {
+  position: absolute;
+  top: 7vh;
+}
+
+#error-component {
+  margin-top: 200px;
+  text-align: center;
+  color: var(--blue);
+  font-size: 1.5rem;
+}
+
+#error-component h2,
+h3 {
+  margin: 0;
+}
+
+/* ---- end of Error page   ---- */

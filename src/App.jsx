@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import IndividualArticle from "./pages/IndividualArticle/IndividualArticle";
 import { UserProvider } from "./contexts/User";
 import AllTopics from "./pages/AllTopics";
+import ErrorPage from "./pages/ErrorPage.jsx";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/articles" element={<AllArticles />} />
         <Route path="/articles/:article_id" element={<IndividualArticle />} />
         <Route path="/topics" element={<AllTopics />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
 
       <Footer />
