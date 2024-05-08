@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getArticleComments } from "../../apis/apis";
 import PostComment from "./PostComment";
+import CommentTiles from "./CommentTiles";
 
 export default function ArticleComments({
   article_id,
@@ -9,30 +10,31 @@ export default function ArticleComments({
   comment_count,
 }) {
   const [articleComments, setArticleComments] = useState([]);
-  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(10);
   const [isAddCommentClicked, setIsAddCommentClicked] = useState(false);
   const [isCommentSubmitted, setIsCommentSubmitted] = useState(false);
-  const username = "cooljmessy"; //hard coded for now!
+
+  const [isDeleted, setIsDeleted] = useState(false);
+
   useEffect(() => {
-    getArticleComments(article_id, page).then(({ comments }) => {
+    getArticleComments(article_id, limit).then(({ comments }) => {
       const commentsDateFormatted = comments.map((comment) => {
         return {
           ...comment,
           created_at: comment.created_at.split("T")[0],
         };
       });
-      setArticleComments((currentComments) => {
-        return [...currentComments, ...commentsDateFormatted];
-      });
+      setArticleComments(commentsDateFormatted);
       setIsCommentsLoading(false);
     });
-  }, [article_id, page]);
+  }, [article_id, isDeleted, limit, setIsCommentsLoading]);
 
-  function handleClick() {
-    setPage((currentPage) => currentPage + 1);
+  function handleLimitClick() {
+    setLimit((currentLimit) => currentLimit + 10);
   }
 
   function handleCommentButton() {
+    setIsCommentSubmitted(false);
     setIsAddCommentClicked((currentStatus) => !currentStatus);
   }
 
@@ -48,7 +50,6 @@ export default function ArticleComments({
       {isAddCommentClicked && (
         <PostComment
           article_id={article_id}
-          username={username}
           setIsCommentSubmitted={setIsCommentSubmitted}
           setArticleComments={setArticleComments}
           setIsAddCommentClicked={setIsAddCommentClicked}
@@ -58,24 +59,16 @@ export default function ArticleComments({
       {articleComments.length > 0 ? (
         <>
           <ul>
-            {articleComments.map((comment) => {
-              return (
-                <li key={comment.comment_id} className="article-comment-tile">
-                  <h3 className="article-comments-author">{comment.author}</h3>
-                  <p className="article-comments-date">{comment.created_at}</p>
-                  <p className="article-comments-body">{comment.body}</p>
-
-                  <span className="article-comments-votes">
-                    {comment.votes} votes
-                  </span>
-                </li>
-              );
-            })}
+            <CommentTiles
+              articleComments={articleComments}
+              setIsDeleted={setIsDeleted}
+              setIsCommentSubmitted={setIsCommentSubmitted}
+            />
           </ul>
           <button
             className="see-more-button"
-            onClick={handleClick}
-            disabled={page * 10 > comment_count}
+            onClick={handleLimitClick}
+            disabled={limit > comment_count}
           >
             See more
           </button>

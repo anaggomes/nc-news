@@ -9,13 +9,14 @@ export default function HandleArticleVotes({ article_id, currentVotes }) {
     patchArticleVotes(article_id, vote).catch((err) => {
       setError({
         message:
-          "I am sorry we could not complete your request. Please try again later.",
+          "We are sorry we could not complete your request. Please try again later.",
       });
       setVoteChange(0);
       setTotalVotes(currentVotes);
     });
     setVoteChange((currentVote) => currentVote + vote);
     setTotalVotes((currentTotal) => currentTotal + vote);
+    setError({});
   }
 
   return (
@@ -38,7 +39,7 @@ export default function HandleArticleVotes({ article_id, currentVotes }) {
         >
           vote down
         </button>
-        <span>{error.message}</span>
+        <span className="error-message">{error.message}</span>
       </section>
     </>
   );

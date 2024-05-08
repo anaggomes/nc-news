@@ -16,10 +16,10 @@ export function getArticleByID(article_id) {
     });
 }
 
-export function getArticleComments(article_id, page) {
+export function getArticleComments(article_id, limit) {
   return axios
     .get(
-      `https://nc-news-dkoj.onrender.com/api/articles/${article_id}/comments?p=${page}`
+      `https://nc-news-dkoj.onrender.com/api/articles/${article_id}/comments?limit=${limit}`
     )
     .then(({ data }) => {
       return data;
@@ -43,7 +43,20 @@ export function postArticleComment(body, article_id) {
       body
     )
     .then(({ data }) => {
-      console.log(data);
+      return data;
+    });
+}
+
+export function deleteComment(comment_id) {
+  return axios.delete(
+    `https://nc-news-dkoj.onrender.com/api/comments/${comment_id}/`
+  );
+}
+
+export function getUserByUsername(username) {
+  return axios
+    .get(`https://nc-news-dkoj.onrender.com/api/users/${username}/`)
+    .then(({ data }) => {
       return data;
     });
 }

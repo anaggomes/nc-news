@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { postArticleComment } from "../../apis/apis";
+import { UserContext } from "../../contexts/User";
 
 export default function PostComment({
-  username,
   article_id,
   setIsCommentSubmitted,
   setArticleComments,
   setIsAddCommentClicked,
 }) {
+  const { userLogIn } = useContext(UserContext);
+
+  const username = userLogIn.username;
   const [commentInput, setCommentInput] = useState({ username });
   const [commentError, setCommentError] = useState({});
   const [isSubmitClicked, setIsSubmitClicked] = useState(false);
@@ -50,23 +53,25 @@ export default function PostComment({
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="new-comment-form">
-        <label htmlFor="comment-input">{username}</label>
-        <textarea
-          placeholder="Add a comment..."
-          id="comment-input"
-          value={commentInput.body}
-          onChange={(e) => {
-            setCommentInput(() => {
-              return { ...commentInput, body: e.target.value };
-            });
-          }}
-        />
-        <span className="comment-error">{commentError.msg}</span>
-        <button type="submit" disabled={isSubmitClicked}>
-          Send
-        </button>
-      </form>
+      {
+        <form onSubmit={handleSubmit} className="new-comment-form">
+          <label htmlFor="comment-input">{username}</label>
+          <textarea
+            placeholder="Add a comment..."
+            id="comment-input"
+            value={commentInput.body}
+            onChange={(e) => {
+              setCommentInput(() => {
+                return { ...commentInput, body: e.target.value };
+              });
+            }}
+          />
+          <span className="error-message">{commentError.msg}</span>
+          <button type="submit" disabled={isSubmitClicked}>
+            Send
+          </button>
+        </form>
+      }
     </>
   );
 }
