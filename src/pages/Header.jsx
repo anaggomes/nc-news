@@ -13,9 +13,9 @@ export default function Header() {
           <Link to="/articles" element={<AllArticles />}>
             <li>All Articles</li>
           </Link>
-          {/* <Link to="/topics"> */}
-          {/* <li>All Topics</li> */}
-          {/* </Link> */}
+          <Link to="/topics">
+            <li>All Topics</li>
+          </Link>
           {/* <Link to="/users"> */}
           {/* <li>All Users</li> */}
           {/* </Link> */}

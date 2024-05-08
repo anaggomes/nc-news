@@ -5,6 +5,7 @@ import Header from "./pages/Header";
 import { Routes, Route } from "react-router-dom";
 import IndividualArticle from "./pages/IndividualArticle/IndividualArticle";
 import { UserProvider } from "./contexts/User";
+import AllTopics from "./pages/AllTopics";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/articles" element={<AllArticles />} />
         <Route path="/articles/:article_id" element={<IndividualArticle />} />
+        <Route path="/topics" element={<AllTopics />} />
       </Routes>
 
       <Footer />
