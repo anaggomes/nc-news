@@ -67,7 +67,7 @@ export default function Home() {
               {articlesSelect.map((article) => {
                 return (
                   <Link
-                    to={`/article/${article.article_id}`}
+                    to={`/articles/${article.article_id}`}
                     key={article.article_id}
                   >
                     <ArticleTiles article={article} />
