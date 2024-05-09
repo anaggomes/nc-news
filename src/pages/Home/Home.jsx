@@ -5,15 +5,16 @@ import { getPopularArticles } from "../../apis/apis";
 import { ArticleTiles } from "../../components/ArticleTile";
 import { Link } from "react-router-dom";
 import LoadingComponent from "../../components/LoadingComponent";
+import ErrorPage from "../ErrorPage";
 
 export default function Home() {
   const { userLogIn } = useContext(UserContext);
   const [articlesSelect, setArticlesSelect] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [isError, setError] = useState({});
+  const [error, setError] = useState({});
 
   useEffect(() => {
-    // setError(null);
+    setError(null);
     getPopularArticles()
       .then(({ articles }) => {
         const articlesDateFormatted = articles.map((article) => {
@@ -28,6 +29,14 @@ export default function Home() {
   }, []);
 
   if (isLoading) return <LoadingComponent />;
+
+  if (error)
+    return (
+      <ErrorPage
+        message={error.err.response.data.message}
+        status={error.err.response.status}
+      />
+    );
   return (
     <>
       {!userLogIn.username ? (
