@@ -11,7 +11,7 @@ export function ArticleTiles({ article }) {
   } = article;
 
   return (
-    <section className="article-tiles">
+    <li className="article-tiles">
       <h2 className="article-tiles-topic">{topic}</h2>
       <h3 className="article-tiles-title">{title}</h3>
       <img
@@ -21,6 +21,6 @@ export function ArticleTiles({ article }) {
       />
       <p className="article-tiles-author">{author}</p>
       <p className="article-tiles-date">{created_at}</p>
-    </section>
+    </li>
   );
 }

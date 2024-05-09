@@ -5,6 +5,7 @@ import { ArticleTiles } from "../../components/ArticleTile";
 import { Link, useSearchParams } from "react-router-dom";
 import FilterOptions from "./FilterOptions";
 import ErrorPage from "../ErrorPage";
+import LoadingComponent from "../../components/LoadingComponent";
 
 export default function AllArticles() {
   const [allArticles, setAllArticles] = useState([]);
@@ -30,6 +31,7 @@ export default function AllArticles() {
   }
 
   useEffect(() => {
+    setError(null);
     getAllArticles(topicQuery, sortByQuery, orderQuery)
       .then(({ articles, total_count }) => {
         const articlesDateFormatted = articles.map((article) => {
@@ -54,7 +56,7 @@ export default function AllArticles() {
   return (
     <section className="page-components">
       {isLoading ? (
-        <h2 className="page-title">Loading...</h2>
+        <LoadingComponent />
       ) : (
         <>
           <h2 className="page-title">All articles</h2>
@@ -69,17 +71,18 @@ export default function AllArticles() {
           {isSortByClicked && (
             <FilterOptions setSortBy={setSortBy} setOrder={setOrder} />
           )}
-
-          {allArticles.map((article) => {
-            return (
-              <Link
-                to={`/articles/${article.article_id}`}
-                key={article.article_id}
-              >
-                <ArticleTiles article={article} />
-              </Link>
-            );
-          })}
+          <ul>
+            {allArticles.map((article) => {
+              return (
+                <Link
+                  to={`/articles/${article.article_id}`}
+                  key={article.article_id}
+                >
+                  <ArticleTiles article={article} />
+                </Link>
+              );
+            })}
+          </ul>
         </>
       )}
     </section>

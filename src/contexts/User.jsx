@@ -6,11 +6,11 @@ export const UserContext = createContext();
 export function UserProvider({ children }) {
   const [userLogIn, setUserLogIn] = useState({});
 
-  useEffect(() => {
-    getUserByUsername("cooljmessy").then(({ user }) => {
-      setUserLogIn(user);
-    });
-  }, []);
+  // useEffect(() => {
+  //   getUserByUsername("cooljmessy").then(({ user }) => {
+  //     setUserLogIn(user);
+  //   });
+  // }, []);
   return (
     <UserContext.Provider value={{ userLogIn, setUserLogIn }}>
       {children}

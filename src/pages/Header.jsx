@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import AllArticles from "./AllArticles/AllArticles";
+import home from "../assets/home.svg";
+import Home from "./Home/Home";
 
 export default function Header() {
   return (
@@ -10,12 +12,12 @@ export default function Header() {
           {/* <Link to="/"> */}
           {/* <li>Home</li> */}
           {/* </Link> */}
-          <Link to="/articles" element={<AllArticles />}>
-            <li>All Articles</li>
+          <Link to="/">
+            <img src={home} />
           </Link>
-          <Link to="/topics">
+          {/* <Link to="/topics">
             <li>All Topics</li>
-          </Link>
+          </Link> */}
           {/* <Link to="/users"> */}
           {/* <li>All Users</li> */}
           {/* </Link> */}

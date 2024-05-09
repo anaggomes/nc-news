@@ -62,8 +62,17 @@ button:disabled {
   color: var(--blue);
 }
 
-/*--- end of general  ---*/
+.loading-animation-container {
+  height: 300px;
+}
+.loading-title {
+  text-align: center;
+  color: #16697a;
+  margin-top: 0;
+}
 
+/*--- end of general  ---*/
+/*--- header and footer  ---*/
 #header {
   height: 7vh;
   background-color: var(--blue);
@@ -91,6 +100,77 @@ button:disabled {
   width: 100%;
   bottom: 0;
 }
+
+/*--- end of header and footer  ---*/
+
+/*--- home ---*/
+
+/* ---- Log In   ---- */
+
+#login-component {
+  margin-top: 7vh;
+  height: 100vh;
+  width: 100vw;
+  z-index: 1;
+  background-color: #489fb5;
+}
+
+#login-component form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 150px auto;
+  gap: 10px;
+  background-color: var(--sand);
+  padding: 20px;
+  border-radius: 10px;
+
+  box-shadow: 0 0 5px var(--sand);
+}
+#login-component span {
+  text-align: center;
+  color: var(--blue);
+}
+
+#login-component label {
+  color: var(--blue);
+  font-weight: 700;
+}
+/* ---- end of Log In   ---- */
+
+.home-selection {
+  background-color: var(--light-blue);
+  width: 95%;
+  margin: 15px auto;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.link-see-all {
+  border: 2px solid var(--blue);
+  border-radius: 10px;
+  width: fit-content;
+  padding: 0.3rem 1rem;
+  color: var(--blue);
+  margin: 5px auto;
+}
+.link-see-all:hover {
+  color: var(--orange);
+}
+
+.home-selection span {
+  color: var(--blue);
+  margin: 0 20px;
+}
+
+.home-selection span:hover {
+  color: var(--orange);
+}
+.home-selection span:active {
+  color: var(--orange);
+}
+/*--- end of home ---*/
 
 /* ---- article tiles  ---- */
 
@@ -135,7 +215,6 @@ button:disabled {
 }
 
 .article-tiles {
-  width: 100vw;
   display: grid;
   grid-template-columns: 1fr 1fr 2fr;
   grid-template-rows: repeat(3, 1fr);
@@ -361,13 +440,16 @@ button:disabled {
 }
 /* ---- end of All Topics   ---- */
 /* ----  Error page   ---- */
-.animation-error {
+#animation-error-container {
   position: absolute;
   top: 7vh;
+  margin: 0 auto;
+  height: 300px;
+  width: 100%;
 }
 
 #error-component {
-  margin-top: 200px;
+  margin-top: 50px;
   text-align: center;
   color: var(--blue);
   font-size: 1.5rem;
@@ -376,6 +458,10 @@ button:disabled {
 #error-component h2,
 h3 {
   margin: 0;
+}
+
+.animation {
+  height: 80%;
 }
 
 /* ---- end of Error page   ---- */

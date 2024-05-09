@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import DisplayArticle from "./DisplayArticle.jsx";
 import ArticleComments from "./ArticleComments.jsx";
 import ErrorPage from "../ErrorPage.jsx";
+import LoadingComponent from "../../components/LoadingComponent.jsx";
 
 export default function IndividualArticle() {
   const [singleArticle, setSingleArticle] = useState({});
@@ -39,7 +40,7 @@ export default function IndividualArticle() {
   return (
     <section className="page-components" id="individual-article">
       {isArticleLoading ? (
-        <h2 className="page-title">Loading...</h2>
+        <LoadingComponent />
       ) : (
         <>
           <DisplayArticle article={singleArticle} />

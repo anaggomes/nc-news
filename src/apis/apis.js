@@ -1,9 +1,9 @@
 import axios from "axios";
 
-export function getAllArticles(topic, sort_by, order_by) {
+export function getAllArticles(topic, sort_by, order_by, limit, p) {
   return axios
     .get("https://nc-news-dkoj.onrender.com/api/articles", {
-      params: { topic, sort_by, order_by },
+      params: { topic, sort_by, order_by, limit, p },
     })
     .then(({ data }) => {
       return data;
@@ -66,6 +66,14 @@ export function getUserByUsername(username) {
 export function getAllTopics() {
   return axios
     .get(`https://nc-news-dkoj.onrender.com/api/topics`)
+    .then(({ data }) => {
+      return data;
+    });
+}
+
+export function getPopularArticles() {
+  return axios
+    .get("https://nc-news-dkoj.onrender.com/api/articles?sort_by=votes&limit=4")
     .then(({ data }) => {
       return data;
     });
