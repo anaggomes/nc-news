@@ -5,22 +5,25 @@ import { getPopularArticles } from "../../apis/apis";
 import { ArticleTiles } from "../../components/ArticleTile";
 import { Link } from "react-router-dom";
 import LoadingComponent from "../../components/LoadingComponent";
-import ErrorPage from "../ErrorPage";
+import ErrorPage from "../../components/ErrorPage";
+import { TotalArticlesContext } from "../../contexts/TotalArticles";
 
 export default function Home() {
   const { userLogIn } = useContext(UserContext);
   const [articlesSelect, setArticlesSelect] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState({});
+  const { setTotalArticles } = useContext(TotalArticlesContext);
 
   useEffect(() => {
     setError(null);
     getPopularArticles()
-      .then(({ articles }) => {
+      .then(({ articles, total_count }) => {
         const articlesDateFormatted = articles.map((article) => {
           return { ...article, created_at: article.created_at.split("T")[0] };
         });
         setArticlesSelect(articlesDateFormatted);
+        setTotalArticles(total_count);
         setIsLoading(false);
       })
       .catch((err) => {

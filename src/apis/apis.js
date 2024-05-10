@@ -1,9 +1,9 @@
 import axios from "axios";
 
-export function getAllArticles(topic, sort_by, order_by, limit, p) {
+export function getAllArticles(topic, sort_by, order_by, limit, p, author) {
   return axios
     .get("https://nc-news-dkoj.onrender.com/api/articles", {
-      params: { topic, sort_by, order_by, limit, p },
+      params: { topic, sort_by, order_by, limit, p, author },
     })
     .then(({ data }) => {
       return data;
@@ -31,6 +31,16 @@ export function getArticleComments(article_id, limit) {
 export function patchArticleVotes(article_id, vote) {
   return axios
     .patch(`https://nc-news-dkoj.onrender.com/api/articles/${article_id}`, {
+      inc_votes: vote,
+    })
+    .then(({ data }) => {
+      return data;
+    });
+}
+export function patchCommentVotes(comment_id, vote) {
+  console.log(comment_id, vote);
+  return axios
+    .patch(`https://nc-news-dkoj.onrender.com/api/comments/${comment_id}`, {
       inc_votes: vote,
     })
     .then(({ data }) => {
@@ -74,6 +84,14 @@ export function getAllTopics() {
 export function getPopularArticles() {
   return axios
     .get("https://nc-news-dkoj.onrender.com/api/articles?sort_by=votes&limit=4")
+    .then(({ data }) => {
+      return data;
+    });
+}
+
+export function getAllUsers() {
+  return axios
+    .get("https://nc-news-dkoj.onrender.com/api/users")
     .then(({ data }) => {
       return data;
     });

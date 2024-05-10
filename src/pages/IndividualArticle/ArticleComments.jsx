@@ -66,7 +66,7 @@ export default function ArticleComments({
             />
           </ul>
           <button
-            className="see-more-button"
+            className="no-background-button"
             onClick={handleLimitClick}
             disabled={limit > comment_count}
           >
