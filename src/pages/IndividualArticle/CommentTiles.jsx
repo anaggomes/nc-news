@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { deleteComment } from "../../apis/apis";
 import { UserContext } from "../../contexts/User";
+import HandleCommentVotes from "./HandleCommentVotes";
 
 export default function CommentTiles({
   articleComments,
@@ -36,6 +37,10 @@ export default function CommentTiles({
         <h3 className="article-comments-author">{comment.author}</h3>
         <p className="article-comments-date">{comment.created_at}</p>
         <p className="article-comments-body">{comment.body}</p>
+        <HandleCommentVotes
+          comment_id={comment.comment_id}
+          currentVotes={comment.votes}
+        />
         {deleteAllowed && (
           <>
             <button
@@ -50,7 +55,7 @@ export default function CommentTiles({
             <span>{deleteError.msg}</span>
           </>
         )}
-        <span className="article-comments-votes">{comment.votes} votes</span>
+        {/* <span className="article-comments-votes">{comment.votes} votes</span> */}
       </li>
     );
   });

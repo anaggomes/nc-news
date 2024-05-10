@@ -27,7 +27,7 @@ export default function DisplayArticle({ article }) {
           <p>author: {author}</p>
           <p>created: {created_at}</p>
         </section>
-        {/* <span className="display-article-votes">{votes} votes</span> */}
+
         <HandleArticleVotes article_id={article_id} currentVotes={votes} />
         <p className="display-article-body">{body}</p>
       </div>

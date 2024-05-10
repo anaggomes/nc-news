@@ -11,9 +11,9 @@ export function ArticleTiles({ article }) {
   } = article;
 
   return (
-    <li className="article-tiles">
-      <h2 className="article-tiles-topic">{topic}</h2>
-      <h3 className="article-tiles-title">{title}</h3>
+    <li className="article tiles">
+      <h4 className="article-tiles-topic">{topic}</h4>
+      <h5 className="article-tiles-title">{title}</h5>
       <img
         className="article-tiles-image"
         src={article_img_url}

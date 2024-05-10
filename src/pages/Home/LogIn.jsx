@@ -74,8 +74,8 @@ export default function LogIn() {
           <span className="error-message">{logInError.submit}</span>
         )}
       </form>
-      <span>username: cooljmessy </span>
-      <span>password: any :) </span>
+      <p className="user-login">username: cooljmessy </p>
+      <p className="user-login">password: any :) </p>
     </section>
   );
 }

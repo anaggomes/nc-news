@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAllTopics } from "../apis/apis";
 import { Link } from "react-router-dom";
-import ErrorPage from "./ErrorPage";
+import ErrorPage from "../components/ErrorPage";
 import LoadingComponent from "../components/LoadingComponent";
 
 export default function AllTopics() {
@@ -37,7 +37,7 @@ export default function AllTopics() {
             {allTopics.map((topic) => {
               return (
                 <Link to={`/articles?topic=${topic.slug}`} key={topic.slug}>
-                  <li className="topics-tiles">
+                  <li className="topics tiles">
                     <h3>{topic.slug}</h3>
                     <p>{topic.description}</p>
                   </li>

@@ -47,6 +47,7 @@ export default function PostComment({
           setCommentError({
             msg: "Sorry we could not complete your request. Please try again later",
           });
+          setIsSubmitClicked(false);
         });
     }
   }
@@ -67,7 +68,11 @@ export default function PostComment({
             }}
           />
           <span className="error-message">{commentError.msg}</span>
-          <button type="submit" disabled={isSubmitClicked}>
+          <button
+            className="send-comment-button"
+            type="submit"
+            disabled={isSubmitClicked}
+          >
             Send
           </button>
         </form>

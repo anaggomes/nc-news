@@ -1,12 +1,13 @@
 import { useState } from "react";
-import { patchArticleVotes } from "../../apis/apis";
+import { patchCommentVotes } from "../../apis/apis";
 
-export default function HandleArticleVotes({ article_id, currentVotes }) {
+export default function HandleCommentVotes({ comment_id, currentVotes }) {
   const [voteChange, setVoteChange] = useState(0);
   const [totalVotes, setTotalVotes] = useState(currentVotes);
   const [error, setError] = useState({});
+
   function handleClick(vote) {
-    patchArticleVotes(article_id, vote).catch((err) => {
+    patchCommentVotes(comment_id, vote).catch((err) => {
       setError({
         message:
           "We are sorry we could not complete your request. Please try again later.",
@@ -21,7 +22,7 @@ export default function HandleArticleVotes({ article_id, currentVotes }) {
 
   return (
     <>
-      <section className="article-votes">
+      <section className="comment-votes">
         <button
           className="vote-up"
           onClick={() => {
