@@ -83,7 +83,7 @@ export function getAllTopics() {
 
 export function getPopularArticles() {
   return axios
-    .get("https://nc-news-dkoj.onrender.com/api/articles?sort_by=votes&limit=4")
+    .get("https://nc-news-dkoj.onrender.com/api/articles?sort_by=votes&limit=3")
     .then(({ data }) => {
       return data;
     });

@@ -33,7 +33,7 @@ export default function AllTopics() {
       ) : (
         <section className="page-components" id="topics-page">
           <h2 className="page-title">Find articles about each topic:</h2>
-          <ul>
+          <ul className="topics-container">
             {allTopics.map((topic) => {
               return (
                 <Link to={`/articles?topic=${topic.slug}`} key={topic.slug}>

@@ -31,7 +31,7 @@ export default function HandleArticleVotes({ article_id, currentVotes }) {
         >
           vote up
         </button>
-        <span>{totalVotes}</span>
+        <span className="article-votes-count">{totalVotes}</span>
 
         <button
           className="vote-down"

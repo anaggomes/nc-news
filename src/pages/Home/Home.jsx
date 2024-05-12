@@ -45,27 +45,35 @@ export default function Home() {
       {!userLogIn.username ? (
         <LogIn />
       ) : (
-        <section className="page-components">
-          <h2>Hi {userLogIn.username} !</h2>
-
+        <section id="home-component">
+          <div id="home-welcome">
+            <h2>Hi {userLogIn.username} !</h2>
+            <h3>What would you like to read today?</h3>
+          </div>
           <section id="home-topics" className="home-selection">
+            <h3>Click to read today's hottest topics:</h3>
+            <ul>
+              <Link to={`/articles?topic=coding`}>
+                <li className="topics tiles">
+                  <h3>coding</h3>
+                  <p>Code is love, code is life</p>
+                </li>
+              </Link>
+              <Link to={`/articles?topic=football`}>
+                <li className="topics tiles" id="home-second-topic">
+                  <h3>Football</h3>
+                  <p>Footie</p>
+                </li>
+              </Link>
+            </ul>
+
             <Link to="/topics">
-              <h3 className="link-see-all">See all topics</h3>
-            </Link>
-            <p>See the articles for today's hottest topics:</p>
-            <Link to="/articles?topic=coding">
-              <span>Coding</span>
-            </Link>
-            <Link to="/articles?topic=football">
-              <span>Football</span>
+              <button className="link-see-all">See all topics</button>
             </Link>
           </section>
 
           <section id="home-articles" className="home-selection">
-            <Link to="/articles">
-              <h3 className="link-see-all">See all articles</h3>
-            </Link>
-            <p>A selection of our most popular articles:</p>
+            <h3>Popular articles:</h3>
             <ul>
               {articlesSelect.map((article) => {
                 return (
@@ -78,6 +86,9 @@ export default function Home() {
                 );
               })}
             </ul>
+            <Link to="/articles">
+              <button className="link-see-all">See all articles</button>
+            </Link>
           </section>
         </section>
       )}

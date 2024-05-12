@@ -1,22 +1,24 @@
-import { useContext } from "react";
-import { UserContext } from "../contexts/User";
-import search from "../assets/search.svg";
-import post from "../assets/post.svg";
-import { Link } from "react-router-dom";
-import profile from "../assets/profile.svg";
+import { useEffect, useState } from "react";
+import NavButtons from "../components/NavButtons";
+
 export default function Footer() {
-  const { userLogIn } = useContext(UserContext);
+  const [isNavShowing, setIsNavShowing] = useState(false);
+
+  function handleResize() {
+    setIsNavShowing(window.innerWidth < 750);
+  }
+  useEffect(() => {
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <section id="footer">
-      <img src={search} /> <img src={post} />
-      <Link to="/userprofile">
-        <div id="footer-avatar">
-          <img
-            src={userLogIn.avatar_url ? userLogIn.avatar_url : profile}
-            alt="user avatar image"
-          />
-        </div>
-      </Link>
+      <ul className="footer-buttons">{isNavShowing && <NavButtons />}</ul>
     </section>
   );
 }

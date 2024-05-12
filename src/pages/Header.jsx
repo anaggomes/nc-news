@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import menu from "../assets/menu.svg";
 
 import { useEffect, useState } from "react";
+import NavButtons from "../components/NavButtons";
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(true);
-
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isNavButtonHeader, setIsNavButtonHeader] = useState(false);
   function handleResize() {
-    setIsMenuOpen(window.innerWidth > 650);
+    setIsNavButtonHeader(window.innerWidth > 750);
   }
   useEffect(() => {
     handleResize();
@@ -20,7 +21,7 @@ export default function Header() {
   }, []);
 
   function handleLinkClick() {
-    if (window.innerWidth < 650) toggleMenu();
+    toggleMenu();
   }
   function toggleMenu() {
     setIsMenuOpen(!isMenuOpen);
@@ -30,7 +31,7 @@ export default function Header() {
     <section id="header">
       <h1 id="app-title">NC NEWS</h1>
       <nav className="navBar">
-        <ul style={{ display: isMenuOpen ? "inline" : "none" }}>
+        <ul id="drop-menu" style={{ display: isMenuOpen ? "inline" : "none" }}>
           <Link to="/" onClick={handleLinkClick}>
             <li>Home</li>
           </Link>
@@ -44,7 +45,17 @@ export default function Header() {
             <li>All Users</li>
           </Link>
         </ul>
-        <img id="menu-icon" src={menu} alt="menu icon" onClick={toggleMenu} />
+        <ul className="header-buttons">
+          {isNavButtonHeader && <NavButtons />}
+          <li>
+            <img
+              id="menu-icon"
+              src={menu}
+              alt="menu icon"
+              onClick={toggleMenu}
+            />
+          </li>
+        </ul>
       </nav>
     </section>
   );

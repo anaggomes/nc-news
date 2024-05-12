@@ -32,7 +32,7 @@ export default function HandleCommentVotes({ comment_id, currentVotes }) {
         >
           vote up
         </button>
-        <span>{totalVotes}</span>
+        <span className="comment-votes-count">{totalVotes}</span>
 
         <button
           className="vote-down"

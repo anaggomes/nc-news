@@ -63,8 +63,8 @@ export default function AllArticles() {
   if (error)
     return (
       <ErrorPage
-        message={error.err.response.data.message}
-        status={error.err.response.status}
+      // message={error.err.response.data.message}
+      // status={error.err.response.status}
       />
     );
   return (
@@ -86,7 +86,7 @@ export default function AllArticles() {
           {isSortByClicked && (
             <FilterOptions setSortBy={setSortBy} setOrder={setOrder} />
           )}
-          <ul>
+          <ul id="all-articles-container">
             {allArticles.map((article) => {
               return (
                 <Link

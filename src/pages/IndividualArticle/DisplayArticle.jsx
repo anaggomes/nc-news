@@ -23,12 +23,12 @@ export default function DisplayArticle({ article }) {
           src={article_img_url}
           alt="article image uploaded by author"
         />
+        <HandleArticleVotes article_id={article_id} currentVotes={votes} />
         <section className="display-article-authorAndDate">
           <p>author: {author}</p>
           <p>created: {created_at}</p>
         </section>
 
-        <HandleArticleVotes article_id={article_id} currentVotes={votes} />
         <p className="display-article-body">{body}</p>
       </div>
     </section>

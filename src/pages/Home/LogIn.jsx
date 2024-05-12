@@ -32,50 +32,57 @@ export default function LogIn() {
   }
 
   return (
-    <section id="login-component" className="page-components">
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username</label>
-        <input
-          id="username"
-          type="text"
-          value={logInInput.username}
-          onChange={(e) => {
-            setLogInError({ ...logInError, username: "" });
-            setLogInInput({ ...logInInput, username: e.target.value });
-          }}
-          disabled={isSubmitClicked}
-          onBlur={() => {
-            handleBlur("username");
-          }}
-        />
-        {logInError.username && (
-          <span className="error-message">{logInError.username}</span>
-        )}
-        <label htmlFor="password">Password</label>
-        <input
-          id="password"
-          type="password"
-          disabled={isSubmitClicked}
-          onBlur={() => {
-            handleBlur("password");
-          }}
-          onChange={(e) => {
-            setLogInError({ ...logInError, password: "" });
-            setLogInInput({ ...logInInput, password: e.target.value });
-          }}
-        />
-        {logInError.password && (
-          <span className="error-message">{logInError.password}</span>
-        )}
-        <button type="submit" disabled={isSubmitClicked}>
-          login
-        </button>
-        {logInError.submit && (
-          <span className="error-message">{logInError.submit}</span>
-        )}
-      </form>
-      <p className="user-login">username: cooljmessy </p>
-      <p className="user-login">password: any :) </p>
+    <section id="login-component">
+      <div id="login-container">
+        <h1 id="login-title">NC NEWS</h1>
+        <h4 id="login-intro">
+          Log log in to access all articles and share your thoughts with other
+          users!
+        </h4>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="username">Username</label>
+          <input
+            id="username"
+            type="text"
+            value={logInInput.username}
+            onChange={(e) => {
+              setLogInError({ ...logInError, username: "" });
+              setLogInInput({ ...logInInput, username: e.target.value });
+            }}
+            disabled={isSubmitClicked}
+            onBlur={() => {
+              handleBlur("username");
+            }}
+          />
+          {logInError.username && (
+            <span className="error-message">{logInError.username}</span>
+          )}
+          <label htmlFor="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            disabled={isSubmitClicked}
+            onBlur={() => {
+              handleBlur("password");
+            }}
+            onChange={(e) => {
+              setLogInError({ ...logInError, password: "" });
+              setLogInInput({ ...logInInput, password: e.target.value });
+            }}
+          />
+          {logInError.password && (
+            <span className="error-message">{logInError.password}</span>
+          )}
+          <button id="login-button" type="submit" disabled={isSubmitClicked}>
+            login
+          </button>
+          {logInError.submit && (
+            <span className="error-message">{logInError.submit}</span>
+          )}
+        </form>
+        <p className="user-login">username: cooljmessy </p>
+        <p className="user-login">password: any :) </p>
+      </div>
     </section>
   );
 }

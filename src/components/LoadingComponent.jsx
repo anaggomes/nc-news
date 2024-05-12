@@ -3,15 +3,17 @@ import walkingOrange from "../assets/walkingOrange.json";
 
 export default function LoadingComponent() {
   return (
-    <>
-      <div className="loading-animation-container">
+    <section className="error-loading-component">
+      <div className="animation-container">
         <Lottie
           animationData={walkingOrange}
           loop={true}
           className="animation"
         />
       </div>
-      <h2 className="loading-title">Loading...</h2>
-    </>
+      <div className="error-loading-message">
+        <h2>Loading...</h2>
+      </div>
+    </section>
   );
 }

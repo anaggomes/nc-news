@@ -6,21 +6,24 @@ export default function ErrorPage(props) {
   const { message, status } = props;
 
   return (
-    <section id="error-component">
-      <div id="animation-error-container">
+    <section className="error-loading-component">
+      <div className="animation-container">
         <Lottie
           animationData={sadAnimation}
           loop={true}
           className="animation"
         />
       </div>
-      <h2>{status}</h2>
-      <h3>
-        {message || "Sorry, the page you are trying to access does not exist."}
-      </h3>
-      <Link to="/articles">
-        <button type="submit">Return to all articles</button>
-      </Link>
+      <div className="error-loading-message">
+        <h2>{status}</h2>
+        <h3>
+          {message ||
+            "Sorry, the page you are trying to access does not exist."}
+        </h3>
+        <Link to="/">
+          <button type="submit">Return to home </button>
+        </Link>
+      </div>
     </section>
   );
 }

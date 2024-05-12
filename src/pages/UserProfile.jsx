@@ -7,21 +7,31 @@ export default function UserProfile() {
   const { userLogIn, setUserLogIn } = useContext(UserContext);
   return (
     <section className="page-components" id="profile-page">
-      <img
-        id="profile-avatar"
-        src={userLogIn.avatar_url}
-        alt="user avatar image"
-      />
-      <h3>{userLogIn.name}</h3>
-      <h3>{userLogIn.username}</h3>
+      <h2 className="page-title">Your account:</h2>
+      <section id="profile-container">
+        <img
+          id="profile-avatar"
+          src={userLogIn.avatar_url}
+          alt="user avatar image"
+        />
+        <h3>
+          <strong>Name: </strong>
+          {userLogIn.name}
+        </h3>
+        <h3>
+          <strong>Username: </strong>
+          {userLogIn.username}
+        </h3>
+      </section>
       <Link to="/">
-        <span
+        <button
+          id="logout-button"
           onClick={() => {
             setUserLogIn({});
           }}
         >
           Log Out
-        </span>
+        </button>
       </Link>
     </section>
   );
