@@ -36,8 +36,9 @@ export default function LogIn() {
       <div id="login-container">
         <h1 id="login-title">NC NEWS</h1>
         <h4 id="login-intro">
-          Log log in to access all articles and share your thoughts with other
-          users!
+          Sign in to gain access to all articles and join the conversation with
+          other users. Your thoughts and insights matter – let's make this
+          community thrive together!
         </h4>
         <form onSubmit={handleSubmit}>
           <label htmlFor="username">Username</label>
